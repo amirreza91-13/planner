@@ -25,7 +25,7 @@ Planner is a personal planning web application designed to help organize tasks, 
 
 The project combines a React and TypeScript frontend with a Django backend and a SQLite database for local development.
 
-**Current focus:** building a maintainable application structure and improving the development workflow.
+**Current focus:** a usable local-first frontend, with backend integration and broader validation still in progress.
 
 ## Tech Stack
 
@@ -53,17 +53,31 @@ The project combines a React and TypeScript frontend with a Django backend and a
 
 ## Architecture
 
-```text
-Planner/
-├── config/          # Django project configuration
-├── core/            # Main Django application
-│   ├── management/  # Custom management commands
-│   └── migrations/  # Database migrations
-├── frontend/        # React + TypeScript application
-├── manage.py        # Django management entry point
-├── requirements.txt # Python dependencies
-└── README.md
+```mermaid
+flowchart LR
+    U[User] --> FE[React + TypeScript frontend]
+    FE --> LS[(Browser localStorage)]
+    BE[Django + REST Framework API]
+    DB[(SQLite for local development)] --- BE
+    FE -. "integration in progress" .-> BE
 ```
+
+The frontend currently stores planner data in the browser. The Django API and database are part of the repository, but end-to-end frontend/backend integration should not be assumed complete.
+
+### Feature status
+
+| Feature | Current status |
+|---|---|
+| Tasks | Add, edit, complete, filter, categorize, prioritize, and set due dates |
+| Focus timer | 25-minute timer with pause and resume |
+| Calendar | Monthly view of tasks with due dates |
+| Habits | Create habits and track completed days |
+| Notes | Create and manage personal notes |
+| Reports | Summaries calculated from saved task data |
+| Languages | Persian (RTL) and English (LTR) |
+| Theme | Light and dark modes |
+| Persistence | Browser localStorage for frontend data |
+| Backend | Django REST Framework project included; integration needs separate validation |
 
 ## Getting Started
 
